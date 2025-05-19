@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Jogo da Memória - 4 Pares</title>
+  <link rel="stylesheet" href="css/memoria.css">
+</head>
+<body>
+
+<div class="game-board" id="gameBoard"></div>
+
+<script>
+  const symbols = ['🍎', '🚗', '🐶', '🎵'];
+  let cards = [...symbols, ...symbols]; // 4 pares
+  let flippedCards = [];
+  let lockBoard = false;
+
+  cards.sort(() => 0.5 - Math.random());
+
+  const board = document.getElementById('gameBoard');
+
+  cards.forEach(symbol => {
+    const card = document.createElement('div');
+    card.classList.add('card');
+    card.innerHTML = `
+      <div class="front"></div>
+      <div class="back">${symbol}</div>
+    `;
+
+    card.addEventListener('click', () => {
+      if (lockBoard || card.classList.contains('flip')) return;
+
+      card.classList.add('flip');
+      flippedCards.push(card);
+
+      if (flippedCards.length === 2) {
+        lockBoard = true;
+        const [first, second] = flippedCards;
+
+        const firstSymbol = first.querySelector('.back').textContent;
+        const secondSymbol = second.querySelector('.back').textContent;
+
+        if (firstSymbol === secondSymbol) {
+          flippedCards = [];
+          lockBoard = false;
+        } else {
+          setTimeout(() => {
+            first.classList.remove('flip');
+            second.classList.remove('flip');
+            flippedCards = [];
+            lockBoard = false;
+          }, 1000);
+        }
+      }
+    });
+
+    board.appendChild(card);
+  });
+</script>
+
+</body>
+</html>

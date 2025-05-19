@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReabiPlay - Registar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/registar.css">
+</head>
+<body>
+
+    <div class="header">
+        <h1>ReabiPlay</h1>
+        <div class="sub-header">Plataforma de Exercícios e Jogos Sérios Aplicados à Reabilitação de Idosos</div>
+    </div>
+
+    <div class="form-wrapper">
+        <div class="form-container">
+            <h2>Registo de Utilizador</h2>
+
+            <form method="post" action="../registar.jsp">
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="nome" name="nome" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="senha">Palavra Passe:</label>
+                <input type="password" id="senha" name="palavra_passe" required>
+
+                <label for="tipo">Tipo de Utilizador:</label>
+                <select id="tipo" name="tipo" onchange="toggleFields()" required>
+                	<option value="" disabled selected> </option>
+                    <option value="Paciente">Paciente</option>
+                    <option value="Profissional">Profissional de Saúde</option>
+                    <option value="Familiar">Familiar</option>
+                </select>
+
+                <div id="utenteField">
+                    <label for="utente">Número de Utente:</label>
+                    <input type="number" id="utente" name="utente" min="0">
+                </div>
+
+                <div id="especialidadeField" style="display: none;">
+                    <label for="especialidade">Especialidade:</label>
+                    <input type="text" id="especialidade" name="especialidade"  />
+                </div>
+
+                <button type="submit">Registar</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function toggleFields() {
+            const tipo = document.getElementById("tipo").value;
+            const utenteField = document.getElementById("utenteField");
+            const especialidadeField = document.getElementById("especialidadeField");
+
+            // Exibir ou esconder campos com base no tipo de utilizador
+            if (tipo === "Paciente") {
+                utenteField.style.display = "block";
+                especialidadeField.style.display = "none";
+            } else if (tipo === "Profissional") {
+                utenteField.style.display = "none";
+                especialidadeField.style.display = "block";
+            } else {
+                utenteField.style.display = "none";
+                especialidadeField.style.display = "none";
+            }
+        }
+
+        // Executar no carregamento inicial
+        toggleFields();
+    </script>
+
+</body>
+</html>

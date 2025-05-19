@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReabiPlay - Perfil</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/profissionalperfil.css">
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="logo">ReabiPlay</div>
+        <a href="profissionalprincipal.html">Página Principal</a>
+        <a href="profissionalpacientes.html">Pacientes</a>
+        <a href="profissionalestatisticas.html">Estatísticas</a>
+        <a href="profissionalmensagens.html">Mensagens</a>
+        <a href="profissionalperfil.html">Perfil</a>
+        <a href="paginainicial.html">Sair</a>
+    </div>
+
+    <div class="main-content">
+        <h2>Perfil Profissional</h2>
+        <p><em>Informações cadastradas no sistema.</em></p>
+
+        <div class="profile-box" id="profile-info">
+            <p><strong>Nome:</strong> Afonso Santos</p>
+            <p><strong>Idade:</strong> 42</p>
+            <p><strong>Profissão:</strong> Fisioterapeuta</p>
+            <p><strong>Objetivo de Reabilitação:</strong> Sem plano de reabilitação</p>
+            <p><strong>Plano de Reabilitação Atual:</strong> Sem plano de reabilitação</p>
+            <button class="action-button" onclick="toggleEdit()">Editar Perfil</button>
+        </div>
+
+        <div class="profile-box hidden" id="edit-form">
+            <label for="name">Nome:</label>
+            <input type="text" id="name" value="Afonso Santos">
+
+            <label for="age">Idade:</label>
+            <input type="number" id="age" value="42">
+
+            <label for="profession">Profissão:</label>
+            <input type="text" id="profession" value="Fisioterapeuta">
+
+            <label for="goal">Objetivo de Reabilitação:</label>
+            <input type="text" id="goal" value="Sem plano de reabilitação">
+
+            <label for="rehab-plan">Plano de Reabilitação Atual:</label>
+            <input type="text" id="rehab-plan" value="Sem plano de reabilitação">
+
+            <div class="button-group">
+                <button class="action-button" onclick="toggleEdit()">Guardar Alterações</button>
+                <button class="action-button" onclick="toggleEdit()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleEdit() {
+            document.getElementById('profile-info').classList.toggle('hidden');
+            document.getElementById('edit-form').classList.toggle('hidden');
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Desafio de Contagem</title>
+  <link rel="stylesheet" href="../css/contagem.css">
+</head>
+<body>
+
+<h1>Desafio de Contagem</h1>
+<p id="roundCounter">Ronda 1/5</p>
+
+<div class="count-container">
+  <p>Quantos círculos estão no quadrado?</p>
+
+  <div class="square" id="objects"></div>
+
+  <div class="input-container">
+    <select id="userInput">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+  </div>
+
+  <button class="btn" onclick="checkAnswer()">Verificar Resposta</button>
+
+  <div class="result" id="result"></div>
+  <div class="final-message" id="finalMessage"></div>
+</div>
+
+<script>
+  const colors = [
+    '#e74c3c', '#f1c40f', '#2ecc71', '#9b59b6', '#1abc9c',
+    '#e67e22', '#34495e', '#ff69b4', '#95a5a6', '#3498db'
+  ];
+
+  let correctAnswer;
+  let currentRound = 1;
+  const totalRounds = 5;
+
+  function updateRoundDisplay() {
+    document.getElementById('roundCounter').textContent = `Ronda ${currentRound}/${totalRounds}`;
+  }
+
+  function generateObjects() {
+    updateRoundDisplay();
+
+    const objectsContainer = document.getElementById('objects');
+    correctAnswer = Math.floor(Math.random() * 10) + 1;
+    objectsContainer.innerHTML = '';
+
+    for (let i = 0; i < correctAnswer; i++) {
+      const object = document.createElement('div');
+      object.classList.add('object');
+
+      const colorIndex = Math.floor(Math.random() * colors.length);
+      object.style.backgroundColor = colors[colorIndex];
+
+      const maxLeft = 250;
+      const maxTop = 250;
+      object.style.left = Math.floor(Math.random() * maxLeft) + 'px';
+      object.style.top = Math.floor(Math.random() * maxTop) + 'px';
+
+      objectsContainer.appendChild(object);
+    }
+  }
+
+  function checkAnswer() {
+    const userInput = document.getElementById('userInput').value;
+    const resultElement = document.getElementById('result');
+
+    if (parseInt(userInput) === correctAnswer) {
+      resultElement.textContent = 'Resposta correta!';
+      resultElement.classList.remove('incorrect');
+      resultElement.classList.add('correct');
+      currentRound++;
+
+      if (currentRound <= totalRounds) {
+        setTimeout(() => {
+          generateObjects();
+          document.getElementById('userInput').value = '';
+          resultElement.textContent = '';
+        }, 1500);
+      } else {
+        endGame();
+      }
+    } else {
+      resultElement.textContent = 'Resposta incorreta. Tente novamente!';
+      resultElement.classList.remove('correct');
+      resultElement.classList.add('incorrect');
+    }
+  }
+
+  function endGame() {
+    document.getElementById('roundCounter').textContent = `Ronda ${totalRounds}/${totalRounds}`;
+    const finalMessage = document.getElementById('finalMessage');
+    finalMessage.textContent = 'Parabéns! Você completou o desafio de contagem!';
+    document.getElementById('userInput').disabled = true;
+    document.querySelector('.btn').disabled = true;
+  }
+
+  window.onload = generateObjects;
+</script>
+
+</body>
+</html>

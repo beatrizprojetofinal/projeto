@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReabiPlay - Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/login.css">
+    <script>
+        // Mostra mensagem de erro se existir na URL
+        window.onload = function () {
+            const params = new URLSearchParams(window.location.search);
+            const error = params.get("error");
+            if (error) {
+                const div = document.getElementById("error-message");
+                div.innerText = decodeURIComponent(error);
+                div.style.display = "block";
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h1>ReabiPlay</h1>
+        <div class="sub-header">Plataforma de Exercícios e Jogos Sérios Aplicados à Reabilitação de Idosos</div>
+    </div>
+
+    <div class="form-wrapper">
+        <div class="form-container">
+            <h2>Login</h2>
+
+            <div id="error-message" style="display: none; color: red; margin-bottom: 10px;"></div>
+
+            <form method="post" action="../login.jsp">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" name="senha" required>
+
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

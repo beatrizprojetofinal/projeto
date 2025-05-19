@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Jogo da Memória - 4 Pares</title>
+  <link rel="stylesheet" href="../css/jogo.css">
+</head>
+<body>
+
+<div class="header">
+  <h1>ReabiPlay</h1>
+  <div class="sub-header">Plataforma de Exercícios e Jogos Sérios Aplicados à Reabilitação de Idosos</div>
+  <button class="login-button" onclick="window.location.href='login.html'">Entrar</button>
+</div>
+
+<div class="game-board" id="gameBoard"></div>
+
+<h2 id="congratsMessage" style="text-align: center; color: #A0522D; display: none; margin-top: 30px;">
+  🎉 Parabéns! Jogo Concluído! 🎉
+</h2>
+
+<div class="footer-button">
+  <button class="button" onclick="window.location.href='paginadejogos.html'">Voltar</button>
+</div>
+
+<script>
+  const symbols = ['🍎', '🚗', '🐶', '🎵'];
+  let cards = [...symbols, ...symbols];
+  let flippedCards = [];
+  let lockBoard = false;
+  let matchedPairs = 0;
+
+  cards.sort(() => 0.5 - Math.random());
+
+  const board = document.getElementById('gameBoard');
+  const message = document.getElementById('congratsMessage');
+
+  cards.forEach(symbol => {
+    const card = document.createElement('div');
+    card.classList.add('card');
+    card.innerHTML = `
+      <div class="front"></div>
+      <div class="back">${symbol}</div>
+    `;
+
+    card.addEventListener('click', () => {
+      if (lockBoard || card.classList.contains('flip')) return;
+
+      card.classList.add('flip');
+      flippedCards.push(card);
+
+      if (flippedCards.length === 2) {
+        lockBoard = true;
+        const [first, second] = flippedCards;
+        const firstSymbol = first.querySelector('.back').textContent;
+        const secondSymbol = second.querySelector('.back').textContent;
+
+        if (firstSymbol === secondSymbol) {
+          matchedPairs++;
+          flippedCards = [];
+          lockBoard = false;
+
+          if (matchedPairs === symbols.length) {
+            message.style.display = "block";
+          }
+        } else {
+          setTimeout(() => {
+            first.classList.remove('flip');
+            second.classList.remove('flip');
+            flippedCards = [];
+            lockBoard = false;
+          }, 1000);
+        }
+      }
+    });
+
+    board.appendChild(card);
+  });
+</script>
+
+</body>
+</html>

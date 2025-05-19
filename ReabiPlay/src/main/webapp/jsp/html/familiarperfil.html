@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReabiPlay - Perfil</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/familiarperfil.css">
+    <script>
+        function toggleEdit() {
+            document.getElementById('profile-info').classList.toggle('hidden');
+            document.getElementById('edit-form').classList.toggle('hidden');
+        }
+    </script>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">ReabiPlay</div>
+        <a href="familiarprincipal.html">Página Principal</a>
+        <a href="familiarjogos.html">Jogos</a>
+        <a href="familiarmensagens.html">Mensagens</a>
+        <a href="familiarperfil.html">Perfil</a>
+        <a href="paginainicial.html">Sair</a>
+    </div>
+
+    <div class="main-content">
+        <h2>Perfil</h2>
+
+        <div class="profile-box" id="profile-info">
+            <p><strong>Nome:</strong> João Pereira</p>
+            <p><strong>Idade:</strong> 35</p>
+            <p><strong>Profissão:</strong> Advogado</p>
+            <p><strong>Objetivo de Reabilitação:</strong> Sem plano de reabilitação</p>
+            <p><strong>Plano de Reabilitação Atual:</strong> Sem plano de reabilitação</p>
+            <div class="button-container">
+                <button class="button" onclick="toggleEdit()">Editar Perfil</button>
+            </div>
+        </div>
+        
+        <div class="profile-box hidden" id="edit-form">
+            <label for="name">Nome:</label>
+            <input type="text" id="name" value="João Pereira">
+
+            <label for="age">Idade:</label>
+            <input type="number" id="age" value="35">
+
+            <label for="profession">Profissão:</label>
+            <input type="text" id="profession" value="Advogado">
+
+            <label for="goal">Objetivo de Reabilitação:</label>
+            <input type="text" id="goal" value="Sem plano de reabilitação">
+
+            <label for="rehab-plan">Plano de Reabilitação Atual:</label>
+            <input type="text" id="rehab-plan" value="Sem plano de reabilitação">
+
+            <div class="button-container">
+                <button class="button" onclick="toggleEdit()">Guardar Alterações</button>
+                <button class="button" onclick="toggleEdit()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

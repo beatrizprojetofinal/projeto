@@ -1,0 +1,160 @@
+/* Importa a fonte Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+/* Reset global */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Fonte e fundo do body */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar fixa à esquerda */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 250px;
+  background-color: #A0522D;
+  color: white;
+  padding-top: 30px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 1000;
+}
+
+/* Logo na sidebar */
+.sidebar .logo {
+  font-size: 26px;
+  font-weight: bold;
+  padding: 0 25px 20px 25px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  width: 100%;
+}
+
+/* Links da sidebar */
+.sidebar a {
+  padding: 15px 25px;
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.3s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.sidebar a:hover {
+  background-color: #B5651D;
+}
+
+/* Conteúdo principal (área do jogo) */
+.main {
+  margin-left: 250px; /* desloca para direita para não ficar atrás da sidebar */
+  padding: 40px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Pontuação */
+.pontuacao {
+  font-size: 18px;
+  margin: 20px;
+  color: #333;
+}
+
+/* Tabuleiro do jogo */
+.game-board {
+   display: grid;
+   grid-template-columns: repeat(4, 100px);
+   gap: 10px;
+   justify-content: center;
+}
+
+/* Carta */
+.card {
+  width: 100px;
+  height: 100px;
+  perspective: 1000px;
+  cursor: pointer;
+  position: relative;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.card.flip .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card .front {
+    background-color: #A0522D;
+    color: white;
+}
+
+.card .back {
+    background-color: white;
+    transform: rotateY(180deg);
+}
+
+/* Frente e verso da carta */
+.front,
+.back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  background-color: white;
+}
+
+.back {
+  transform: rotateY(180deg);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 200px;
+  }
+
+  .main {
+    margin-left: 200px;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    display: none;
+  }
+
+  .main {
+    margin-left: 0;
+    padding: 20px;
+  }
+}

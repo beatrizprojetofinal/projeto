@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Jogo de Quebra-Cabeça</title>
+  <link rel="stylesheet" href="css/quebracabecas.css">
+</head>
+<body>
+
+  <h1>Quebra-Cabeça</h1>
+  <div class="puzzle-container" id="puzzleContainer"></div>
+  <div class="success-message" id="successMessage" style="display: none;">Parabéns! Você completou o quebra-cabeça!</div>
+
+  <script>
+    const puzzleContainer = document.getElementById('puzzleContainer');
+    const successMessage = document.getElementById('successMessage');
+    const gridSize = 3; // 3x3 puzzle
+    const imageUrl = 'https://www.w3schools.com/w3images/forest.jpg'; // Imagem do quebra-cabeça
+    let pieces = [];
+    let originalPositions = []; // Array para armazenar a posição original das peças
+
+    // Função para cortar a imagem em peças e colocá-las no tabuleiro
+    function createPuzzle() {
+      let pieceIndex = 0;
+
+      for (let row = 0; row < gridSize; row++) {
+        for (let col = 0; col < gridSize; col++) {
+          const piece = document.createElement('div');
+          piece.classList.add('puzzle-piece');
+
+          // Definir a parte da imagem para cada peça
+          piece.style.backgroundImage = `url(${imageUrl})`;
+          piece.style.backgroundPosition = `-${col * 100}px -${row * 100}px`;
+
+          // Armazenar a posição original da peça
+          originalPositions.push({ pieceIndex, backgroundPosition: piece.style.backgroundPosition });
+
+          // Definir o índice de cada peça
+          piece.dataset.index = pieceIndex;
+
+          // Adicionar evento de clique para mover as peças
+          piece.addEventListener('click', () => movePiece(piece));
+
+          pieces.push(piece);
+          puzzleContainer.appendChild(piece);
+          pieceIndex++;
+        }
+      }
+    }
+
+    // Função para mover as peças do quebra-cabeça
+    let selectedPiece = null;
+    function movePiece(piece) {
+      if (selectedPiece === null) {
+        selectedPiece = piece;
+        piece.style.borderColor = '#3498db'; // Marca a peça selecionada
+      } else {
+        const selectedPieceIndex = selectedPiece.dataset.index;
+        const pieceIndex = piece.dataset.index;
+
+        // Troca de posição entre as peças
+        const tempBackground = piece.style.backgroundPosition;
+        piece.style.backgroundPosition = selectedPiece.style.backgroundPosition;
+        selectedPiece.style.backgroundPosition = tempBackground;
+
+        // Troca os índices das peças para refletir a mudança de posição
+        selectedPiece.dataset.index = pieceIndex;
+        piece.dataset.index = selectedPieceIndex;
+
+        selectedPiece.style.borderColor = '#999'; // Remove a marcação da peça selecionada
+        selectedPiece = null;
+
+        // Verifica se o quebra-cabeça foi concluído
+        checkPuzzleCompleted();
+      }
+    }
+
+    // Função para verificar se o quebra-cabeça foi concluído
+    function checkPuzzleCompleted() {
+      const isCompleted = pieces.every((piece, index) => {
+        return piece.style.backgroundPosition === originalPositions[index].backgroundPosition;
+      });
+
+      if (isCompleted) {
+        successMessage.style.display = 'block'; // Exibe a mensagem de sucesso
+      }
+    }
+
+    // Função para embaralhar as peças do quebra-cabeça
+    function shufflePieces() {
+      pieces = pieces.sort(() => Math.random() - 0.5);
+      pieces.forEach(piece => puzzleContainer.appendChild(piece));
+    }
+
+    createPuzzle();
+    shufflePieces();
+  </script>
+
+</body>
+</html>

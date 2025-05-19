@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Jogo de Pares - Países e Capitais</title>
+  <link rel="stylesheet" href="../css/jogo.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="header">
+    <h1>ReabiPlay</h1>
+    <div class="sub-header">Plataforma de Exercícios e Jogos Sérios Aplicados à Reabilitação de Idosos</div>
+    <button class="login-button" onclick="window.location.href='login.html'">Entrar</button>
+  </div>
+
+  <p class="description">Escolha um país e depois a sua capital.</p>
+
+  <div class="container">
+    <div class="column" id="leftColumn">
+      <div class="item" data-match="1">França</div>
+      <div class="item" data-match="2">Brasil</div>
+      <div class="item" data-match="3">Portugal</div>
+      <div class="item" data-match="4">Japão</div>
+      <div class="item" data-match="5">Canadá</div>
+      <div class="item" data-match="6">Espanha</div>
+      <div class="item" data-match="7">Itália</div>
+      <div class="item" data-match="8">Alemanha</div>
+      <div class="item" data-match="9">Argentina</div>
+      <div class="item" data-match="10">México</div>
+    </div>
+
+    <div class="column" id="rightColumn">
+      <div class="item" data-match="2">Brasília</div>
+      <div class="item" data-match="3">Lisboa</div>
+      <div class="item" data-match="1">Paris</div>
+      <div class="item" data-match="4">Tóquio</div>
+      <div class="item" data-match="5">Ottawa</div>
+      <div class="item" data-match="6">Madrid</div>
+      <div class="item" data-match="7">Roma</div>
+      <div class="item" data-match="8">Berlim</div>
+      <div class="item" data-match="9">Buenos Aires</div>
+      <div class="item" data-match="10">Cidade do México</div>
+    </div>
+  </div>
+
+  <p id="result" class="result"></p>
+
+  <div class="footer-button">
+    <button class="button" onclick="window.location.href='paginadejogos.html'">Voltar</button>
+  </div>
+
+  <script>
+    let firstSelection = null;
+    let secondSelection = null;
+    const items = document.querySelectorAll('.item');
+    const result = document.getElementById('result');
+
+    items.forEach(item => {
+      item.addEventListener('click', () => {
+        if (item.classList.contains('matched') || item === firstSelection) return;
+        item.classList.add('selected');
+
+        if (!firstSelection) {
+          firstSelection = item;
+        } else {
+          secondSelection = item;
+
+          const match1 = firstSelection.dataset.match;
+          const match2 = secondSelection.dataset.match;
+
+          if (match1 === match2) {
+            firstSelection.classList.add('matched');
+            secondSelection.classList.add('matched');
+            result.textContent = 'Par correto!';
+          } else {
+            result.textContent = 'Tente novamente!';
+            setTimeout(() => {
+              firstSelection.classList.remove('selected');
+              secondSelection.classList.remove('selected');
+              result.textContent = '';
+            }, 1000);
+          }
+
+          firstSelection = null;
+          secondSelection = null;
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
