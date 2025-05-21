@@ -1,0 +1,216 @@
+/* Importa a fonte Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    min-height: 100vh;
+  }
+  
+  .sidebar {
+    width: 250px;
+    background-color: #A0522D;
+    color: white;
+    padding-top: 30px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .sidebar .logo {
+    font-size: 26px;
+    font-weight: bold;
+    padding: 0 25px 20px 25px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    width: 100%;
+  }
+  
+  .sidebar a {
+    padding: 15px 25px;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    width: 100%;
+  }
+  
+  .sidebar a:hover {
+    background-color: #B5651D;
+  }
+  
+  .main-content {
+    margin-left: 250px;
+    padding: 40px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  .main-content h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .forum-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+  
+  .forum-box {
+    background-color: #d3d3d3;
+    padding: 20px;
+    margin: 10px;
+    width: 80%;
+    border-radius: 12px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+  }
+  
+  .forum-box h3 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .forum-box p {
+    margin: 10px 0;
+    color: #555;
+  }
+  
+  .forum-box .details {
+    font-size: 14px;
+    color: #888;
+  }
+  
+  .forum-box .button {
+    background-color: #A0522D;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .forum-box .button:hover {
+    background-color: #B5651D;
+  }
+  
+  .button {
+    background-color: #A0522D;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #B5651D;
+  }
+  
+  @media (max-width: 768px) {
+    .sidebar {
+      width: 200px;
+    }
+  
+    .main-content {
+      margin-left: 200px;
+      padding: 20px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .sidebar {
+      display: none;
+    }
+  
+    .main-content {
+      margin-left: 0;
+      padding: 20px;
+    }
+  }
+  
+ .forum-header {
+  margin-bottom: 10px;
+}
+
+.forum-meta {
+  display: block;
+  font-size: 14px;
+  color: #666;
+  margin-top: 4px;
+}
+
+.forum-body {
+  font-size: 16px;
+  color: #444;
+  margin: 10px 0;
+}
+
+.forum-footer {
+  text-align: right;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-top: 4px;
+}
+
+.novo-topico-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; 
+  padding-left: 20;
+}
+
+
+.novo-topico-form {
+  width: 100% !important;
+  max-width: 900px !important;
+  margin-left: 10px !important;
+  background-color: #ffffff !important;
+  padding: 20px !important;
+  border-radius: 12px !important;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.1) !important;
+  margin-top: 20px !important;
+}
+
+.resposta-form {
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin-top: 30px;
+}
+
+.center-button {
+  align-self: center;
+}
