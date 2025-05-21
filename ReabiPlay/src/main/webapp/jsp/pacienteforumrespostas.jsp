@@ -105,7 +105,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>ReabiPlay - Respostas do Fórum</title>
-  <link rel="stylesheet" href="css/pacienteforum.css" />
+  <link rel="stylesheet" href="css/pacienteforumrespostas.css" />
 </head>
 <body>
   <div class="sidebar">
@@ -113,7 +113,6 @@
     <a href="pacienteprincipal.jsp">Página Principal</a>
     <a href="pacienteplanoreabilitacao.jsp">Plano de Reabilitação</a>
     <a href="pacientejogos.jsp">Jogos</a>
-    <a href="pacienteestatisticas.jsp">Estatísticas</a>
     <a href="pacientemensagens.jsp">Mensagens</a>
     <a href="pacienteforum.jsp">Fórum</a>
     <a href="pacienteperfil.jsp">Perfil</a>
@@ -143,13 +142,15 @@
     <hr />
 
     <h3>Adicionar Resposta</h3>
-    <form action="pacienteforumrespostas.jsp" method="post">
-      <input type="hidden" name="forumId" value="<%= forumId %>" />
-      <textarea name="resposta" rows="4" required style="width: 100%; padding: 8px;"></textarea><br /><br />
-      <button type="submit">Enviar Resposta</button>
-    </form>
-
-    <button onclick="window.location.href='pacienteforum.jsp'">Voltar ao Fórum</button>
+    
+    <form action="pacienteforumrespostas.jsp" method="post" class="resposta-form">
+	  <input type="hidden" name="forumId" value="<%= forumId %>" />
+	  <textarea name="resposta" rows="4" required class="input-field"></textarea><br />
+	  <button type="submit" class="button center-button">Enviar Resposta</button>
+	</form>
+	
+	<button class="button center-button" onclick="window.location.href='pacienteforum.jsp'">Voltar ao Fórum</button>
+	    
   </div>
 </body>
 </html>

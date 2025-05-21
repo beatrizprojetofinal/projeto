@@ -38,7 +38,6 @@
     <a href="pacienteprincipal.jsp">Página Principal</a>
     <a href="pacienteplanoreabilitacao.jsp">Plano de Reabilitação</a>
     <a href="pacientejogos.jsp">Jogos</a>
-    <a href="pacienteestatisticas.jsp">Estatísticas</a>
     <a href="pacientemensagens.jsp">Mensagens</a>
     <a href="pacienteforum.jsp">Fórum</a>
     <a href="pacienteperfil.jsp">Perfil</a>

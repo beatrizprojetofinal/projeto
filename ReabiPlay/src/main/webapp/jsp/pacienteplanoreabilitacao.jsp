@@ -1,4 +1,5 @@
 <%@ page import="java.sql.*, javax.naming.*, javax.sql.*" %>
+<%@ page import="dao.JogoDAO, modelo.Jogo" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     // Verifica se o paciente está autenticado
@@ -19,6 +20,9 @@
     boolean temLigacao = false;
     boolean ligacaoAceite = false;
     String nomeProfissional = "";
+
+    // Variável do jogo
+    Jogo jogoSugerido = null;
 
     try {
         Class.forName("com.mysql.cj.jdbc.Driver");
@@ -43,21 +47,7 @@
         rs.close();
         stmt.close();
 
-        // Consultar plano de reabilitação
-        sql = "SELECT descricao, data_inicio, data_fim FROM PlanosReabilitacao WHERE id_paciente = ?";
-        stmt = conn.prepareStatement(sql);
-        stmt.setInt(1, userId);
-        rs = stmt.executeQuery();
 
-        if (rs.next()) {
-            descricaoPlano = rs.getString("descricao");
-            dataInicio = rs.getString("data_inicio");
-            dataFim = rs.getString("data_fim");
-        } else {
-            descricaoPlano = "Ainda não existe um profissional atribuído.";
-        }
-        rs.close();
-        stmt.close();
 
         // Processar solicitação de ligação
         String emailProfissional = request.getParameter("emailProfissional");
@@ -98,6 +88,14 @@
             }
         }
 
+        // Obter jogo sugerido
+        try {
+            JogoDAO jogoDAO = new JogoDAO();
+            jogoSugerido = jogoDAO.obterSugestaoMaisRecente(userId);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     } catch (Exception e) {
         e.printStackTrace();
         mensagemSolicitacao = "Erro ao processar a solicitação.";
@@ -124,7 +122,6 @@
     <a href="pacienteprincipal.jsp">Página Principal</a>
     <a href="pacienteplanoreabilitacao.jsp">Plano de Reabilitação</a>
     <a href="pacientejogos.jsp">Jogos</a>
-    <a href="pacienteestatisticas.jsp">Estatísticas</a>
     <a href="pacientemensagens.jsp">Mensagens</a>
     <a href="pacienteforum.jsp">Fórum</a>
     <a href="pacienteperfil.jsp">Perfil</a>
@@ -135,14 +132,7 @@
     <h2>Plano de Reabilitação</h2>
     <p><em>O seu Profissional de Saúde deixou o seguinte plano de reabilitação disponível:</em></p>
 
-    <div class="plan-box">
-      <strong>Plano de Reabilitação</strong><br><br>
-      <% if (!dataInicio.isEmpty()) { %>
-        <strong>Início:</strong> <%= dataInicio %><br>
-        <strong>Fim:</strong> <%= dataFim %><br><br>
-      <% } %>
-      <%= descricaoPlano.replaceAll("\n", "<br>") %>
-    </div>
+
 
     <% if (temLigacao) { %>
       <div class="connect-box">
@@ -168,7 +158,25 @@
       </div>
     <% } %>
 
-    <button class="exit-button" onclick="window.location.href='paginainicial.jsp'">Sair</button>
+    <hr>
+
+    <h2>Jogo Sugerido</h2>
+    <% if (jogoSugerido != null) { %>
+      <div class="game-box">
+        <p><em>O seu profissional sugeriu o seguinte jogo:</em></p>
+        <strong><%= jogoSugerido.getNome() %></strong><br>
+        <%= jogoSugerido.getDescricao() %><br><br>
+		  <div class="button-center">
+		    <a href="pacientejogos.jsp">
+		      <button class="exit-button">Jogar</button>
+		    </a>
+		  </div>
+      </div>
+      
+    <% } else { %>
+      <p><em>Nenhuma sugestão de jogo disponível no momento.</em></p>
+    <% } %>
+
   </div>
 
 </body>

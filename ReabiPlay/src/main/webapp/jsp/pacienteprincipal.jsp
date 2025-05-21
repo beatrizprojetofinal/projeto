@@ -33,7 +33,6 @@
     <a href="pacienteprincipal.jsp?id=<%=idPaciente%>">Página Principal</a>
     <a href="pacienteplanoreabilitacao.jsp?id=<%=idPaciente%>">Plano de Reabilitação</a>
     <a href="pacientejogos.jsp?id=<%=idPaciente%>">Jogos</a>
-    <a href="pacienteestatisticas.jsp?id=<%=idPaciente%>">Estatísticas</a>
     <a href="pacientemensagens.jsp?id=<%=idPaciente%>">Mensagens</a>
     <a href="pacienteforum.jsp?id=<%=idPaciente%>">Fórum</a>
     <a href="pacienteperfil.jsp?id=<%=idPaciente%>">Perfil</a>

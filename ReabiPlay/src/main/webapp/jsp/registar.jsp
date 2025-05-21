@@ -26,12 +26,13 @@
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ReabiPlay", "root", "Supermercado00");
 
-                String sqlUser = "INSERT INTO Utilizadores (nome, email, palavra_passe, tipo) VALUES (?, ?, ?, ?)";
+                String sqlUser = "INSERT INTO Utilizadores (nome, email, palavra_passe, tipo, ativo) VALUES (?, ?, ?, ?, ?)";
                 psUser = conn.prepareStatement(sqlUser, Statement.RETURN_GENERATED_KEYS);
                 psUser.setString(1, nome);
                 psUser.setString(2, email);
                 psUser.setString(3, senha);
                 psUser.setString(4, tipo);
+                psUser.setBoolean(5, !"Profissional".equals(tipo)); 
                 psUser.executeUpdate();
 
                 rs = psUser.getGeneratedKeys();
@@ -63,7 +64,7 @@
                 if ("Paciente".equals(tipo)) {
                     response.sendRedirect("pacienteprincipal.jsp");
                 } else if ("Profissional".equals(tipo)) {
-                    response.sendRedirect("profissionalprincipal.jsp");
+                    response.sendRedirect("registopendente.jsp");
                 } else if ("Familiar".equals(tipo)) {
                     response.sendRedirect("familiarprincipal.jsp");
                 }

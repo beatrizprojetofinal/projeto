@@ -98,7 +98,6 @@
     <div class="logo">ReabiPlay</div>
     <a href="profissionalprincipal.jsp">Página Principal</a>
     <a href="profissionalpacientes.jsp">Pacientes</a>
-    <a href="profissionalestatisticas.jsp">Estatísticas</a>
     <a href="profissionalmensagens.jsp">Mensagens</a>
     <a href="profissionalperfil.jsp" class="active">Perfil</a>
     <a href="paginainicial.jsp">Sair</a>

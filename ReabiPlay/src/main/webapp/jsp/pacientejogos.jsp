@@ -10,13 +10,11 @@
 </head>
 <body>
 
-  <!-- Sidebar -->
   <div class="sidebar">
     <div class="logo">ReabiPlay</div>
     <a href="pacienteprincipal.jsp">Página Principal</a>
     <a href="pacienteplanoreabilitacao.jsp">Plano de Reabilitação</a>
     <a href="pacientejogos.jsp">Jogos</a>
-    <a href="pacienteestatisticas.jsp">Estatísticas</a>
     <a href="pacientemensagens.jsp">Mensagens</a>
     <a href="pacienteforum.jsp">Fórum</a>
     <a href="pacienteperfil.jsp">Perfil</a>
@@ -26,7 +24,7 @@
   <!-- Main Content -->
   <div class="main-content">
     <h2>Jogos Disponíveis</h2>
-    <p><em>Escolha um dos jogos abaixo para começar a jogar:</em></p>
+    <p><em>Escolha um dos seguintes jogos para começar a jogar:</em></p>
 
     <!-- Jogos -->
     <div class="game-box">
@@ -43,18 +41,24 @@
 
     <div class="game-box">
       <strong>Jogo dos Pares</strong><br><br>
-      • Teste os seus reflexos e habilidades com este jogo de pares<br><br>
+      • Teste as suas habilidades com este jogo de pares<br><br>
       <button class="button" onclick="window.location.href='jogopares.jsp'">Jogar</button>
     </div>
 
     <div class="game-box">
-      <strong>Jogo das Palavras</strong><br><br>
-      • Encontre diversos países numa sopa de palavras<br><br>
-      <button class="button" onclick="window.location.href='jogopalavras.jsp'">Jogar</button>
+      <strong>Jogo das Palavras - Paises</strong><br><br>
+      • Encontre nomes de paises escondidos numa sopa de letras desafiante<br><br>
+      <button class="button" onclick="window.location.href='jogopaises.jsp'">Jogar</button>
+    </div>
+
+    <div class="game-box">
+      <strong>Jogo das Palavras - Cores</strong><br><br>
+      • Identifique nomes de cores ocultos numa sopa de letras desafiante<br><br>
+      <button class="button" onclick="window.location.href='jogocores.jsp'">Jogar</button>
     </div>
 
     <!-- Botão para voltar -->
-    <button class="button" onclick="window.location.href='paginainicial.jsp'">Voltar</button>
+    <button class="button" onclick="window.location.href='paginainicial.jsp'">Sair</button>
   </div>
 
 </body>

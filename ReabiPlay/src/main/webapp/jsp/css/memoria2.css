@@ -1,39 +1,34 @@
 /* Importa a fonte Inter */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
-/* Reset global */
+/* Estilo global */
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
-/* Fonte e fundo do body */
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', sans-serif; /* Garantir a fonte Inter para todo o body */
+  margin: 0;
   background-color: #f4f4f4;
   display: flex;
   min-height: 100vh;
 }
 
-/* Sidebar fixa à esquerda */
 .sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
   width: 250px;
   background-color: #A0522D;
   color: white;
   padding-top: 30px;
-  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  z-index: 1000;
+  font-family: 'Inter', sans-serif; /* Garantir a fonte Inter para a sidebar */
 }
 
-/* Logo na sidebar */
 .sidebar .logo {
   font-size: 26px;
   font-weight: bold;
@@ -43,7 +38,6 @@ body {
   width: 100%;
 }
 
-/* Links da sidebar */
 .sidebar a {
   padding: 15px 25px;
   text-decoration: none;
@@ -52,97 +46,77 @@ body {
   font-weight: 500;
   transition: background-color 0.3s;
   width: 100%;
-  box-sizing: border-box;
 }
 
 .sidebar a:hover {
   background-color: #B5651D;
 }
 
-/* Conteúdo principal (área do jogo) */
-.main {
-  margin-left: 250px; /* desloca para direita para não ficar atrás da sidebar */
+/* Main Content */
+.main-content {
+  margin-left: 250px;
   padding: 40px;
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  font-family: 'Inter', sans-serif; /* Garantir a fonte Inter para o conteúdo principal */
 }
 
-/* Pontuação */
-.pontuacao {
-  font-size: 18px;
-  margin: 20px;
+.main-content h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
   color: #333;
 }
 
-/* Tabuleiro do jogo */
-.game-board {
-   display: grid;
-   grid-template-columns: repeat(4, 100px);
-   gap: 10px;
-   justify-content: center;
+.main-content p {
+  font-size: 18px;
+  margin-top: 10px;
+  color: #333;
 }
 
-/* Carta */
-.card {
-  width: 100px;
-  height: 100px;
-  perspective: 1000px;
-  cursor: pointer;
-  position: relative;
+/* Jogo Recomendado */
+.game-box {
+  background-color: #d3d3d3;
+  padding: 25px 30px;
+  border-radius: 12px;
+  margin-top: 20px;
+  font-size: 20px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-}
-
-.card.flip .card-inner {
-  transform: rotateY(180deg);
-}
-
-.card .front {
+.main .exit-button {
     background-color: #A0522D;
     color: white;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 40px;
+    transition: background-color 0.3s ease;
+    display: block;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.card .back {
-    background-color: white;
-    transform: rotateY(180deg);
+.main .exit-button:hover {
+    background-color: #B5651D;
 }
 
-/* Frente e verso da carta */
-.front,
-.back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 40px;
-  background-color: white;
+
+.exit-button:hover {
+  background-color: #B5651D;
 }
 
-.back {
-  transform: rotateY(180deg);
-}
-
-/* Responsividade */
 @media (max-width: 768px) {
   .sidebar {
     width: 200px;
   }
 
-  .main {
+  .main-content {
     margin-left: 200px;
     padding: 20px;
   }
@@ -153,8 +127,105 @@ body {
     display: none;
   }
 
-  .main {
+  .main-content {
     margin-left: 0;
     padding: 20px;
   }
 }
+
+/* Estilo das cartas do jogo da memória */
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(4, 100px);
+  gap: 10px;
+  justify-content: center;
+}
+
+.card {
+  width: 100px;
+  height: 100px;
+  perspective: 1000px;
+  position: relative;
+}
+
+.card .front, .card .back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 10px;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  transition: transform 0.6s ease;
+}
+
+/* Frente da carta: lado visível antes de virar */
+.card .front {
+  background-color: #A0522D;
+  color: white;
+  transform: rotateY(0deg);
+  z-index: 2;
+}
+
+/* Verso da carta: com símbolo, inicialmente virado */
+.card .back {
+  background-color: white;
+  transform: rotateY(180deg);
+}
+
+/* Quando a carta está virada */
+.card.flip .front {
+  transform: rotateY(180deg);
+}
+
+.card.flip .back {
+  transform: rotateY(360deg); /* ou rotateY(0deg), ambos funcionam visualmente */
+}
+
+.card .front {
+  z-index: 2;
+}
+.card .back {
+  z-index: 1;
+}
+
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
+}
+
+/* Aplica rotação quando flipada */
+.card-inner.flip {
+  transform: rotateY(180deg);
+}
+
+.card .front, .card .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-size: 40px;
+}
+
+/* Frente da carta */
+.card .front {
+  background-color: #A0522D;
+  color: white;
+}
+
+/* Verso da carta (com símbolo) */
+.card .back {
+  background-color: white;
+  transform: rotateY(180deg);
+}
+

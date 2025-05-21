@@ -7,12 +7,13 @@
     <title>Jogo da Memória - 4 Pares</title>
     <link rel="stylesheet" href="css/memoria.css">
     <style>
-        .game-board {
-            display: grid;
-            grid-template-columns: repeat(4, 100px);
-            gap: 10px;
-            justify-content: center;
-        }
+		.game-board {
+		    margin-top: 20px;
+		    display: grid;
+		    grid-template-columns: repeat(4, 100px);
+		    gap: 10px;
+		    justify-content: center;
+		}
 
         .card {
             width: 100px;
@@ -84,7 +85,6 @@
     <a href="pacienteprincipal.jsp">Página Principal</a>
     <a href="pacienteplanoreabilitacao.jsp">Plano de Reabilitação</a>
     <a href="pacientejogos.jsp">Jogos</a>
-    <a href="pacienteestatisticas.jsp">Estatísticas</a>
     <a href="pacientemensagens.jsp">Mensagens</a>
     <a href="pacienteforum.jsp">Fórum</a>
     <a href="pacienteperfil.jsp">Perfil</a>
@@ -94,11 +94,11 @@
 <div class="main-content">
     <h2>Jogo da Memória - 4 Pares</h2>
 
-    <div class="main">
         <div class="pontuacao">Pontuação: <span id="score">0</span></div>
+        
         <div class="game-board" id="gameBoard"></div>
         <div id="mensagemFinal"></div>
-    </div>
+
 
     <button class="exit-button" onclick="window.location.href='pacientejogos.jsp'">Sair do Jogo</button>
 </div>

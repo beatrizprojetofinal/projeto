@@ -15,7 +15,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Detalhes do Paciente</title>
-    <link rel="stylesheet" href="css/profissionalpacientes.css">
+    <link rel="stylesheet" href="css/profissionalpacientesdetalhes.css">
 </head>
 <body>
 
@@ -23,7 +23,6 @@
     <div class="logo">ReabiPlay</div>
     <a href="profissionalprincipal.jsp">Página Principal</a>
     <a href="profissionalpacientes.jsp">Pacientes</a>
-    <a href="profissionalestatisticas.jsp">Estatísticas</a>
     <a href="profissionalmensagens.jsp">Mensagens</a>
     <a href="profissionalperfil.jsp">Perfil</a>
     <a href="paginainicial.jsp">Sair</a>
@@ -45,8 +44,11 @@
 
         <label for="mensagem">Mensagem/Sugestão:</label><br>
         <textarea name="mensagem" id="mensagem" rows="4" cols="50" placeholder="Ex: Jogue este jogo 3 vezes por semana."></textarea><br><br>
+		
+		<div class="button-container">
+		    <button type="submit" class="sugerir-button">Sugerir Jogo</button>
+		</div>
 
-        <button type="submit">Sugerir Jogo</button>
     </form>
 </div>
 

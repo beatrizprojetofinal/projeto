@@ -175,4 +175,18 @@
   color: green;
 }
   
-  
+.button-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.button-center a {
+  display: inline-block;
+}
+
+.button-center .exit-button {
+  margin-top: 0 !important;
+  display: inline-block;
+}

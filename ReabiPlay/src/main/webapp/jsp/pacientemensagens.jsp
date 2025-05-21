@@ -19,7 +19,19 @@
         Class.forName("com.mysql.cj.jdbc.Driver");
         conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ReabiPlay", "root", "Supermercado00");
 
-        // Buscar mensagens recebidas
+        // 1. Verificar profissional associado PRIMEIRO
+        String sqlProf = "SELECT u.id, u.nome FROM Ligacoes l JOIN Utilizadores u ON l.id_profissional = u.id WHERE l.id_paciente = ? AND l.estado = 'Aceite' LIMIT 1";
+        ps = conn.prepareStatement(sqlProf);
+        ps.setInt(1, pacienteId);
+        rs = ps.executeQuery();
+        if (rs.next()) {
+            profissionalId = rs.getInt("id");
+            profissionalNome = rs.getString("nome");
+        }
+        rs.close();
+        ps.close();
+
+        // 2. Buscar mensagens recebidas
         String sqlMensagens = "SELECT u.nome, m.mensagem, m.data_envio FROM Mensagens m JOIN Utilizadores u ON m.remetente_id = u.id WHERE m.destinatario_id = ? ORDER BY m.data_envio DESC";
         ps = conn.prepareStatement(sqlMensagens);
         ps.setInt(1, pacienteId);
@@ -45,7 +57,8 @@
             margin-bottom: 25px;
         }
         .form-wrapper {
-            margin-top: 40px;
+            margin-top: 20px;
+            margin-bottom: 40px;
         }
     </style>
 </head>
@@ -55,7 +68,6 @@
     <a href="pacienteprincipal.jsp">Página Principal</a>
     <a href="pacienteplanoreabilitacao.jsp">Plano de Reabilitação</a>
     <a href="pacientejogos.jsp">Jogos</a>
-    <a href="pacienteestatisticas.jsp">Estatísticas</a>
     <a href="pacientemensagens.jsp">Mensagens</a>
     <a href="pacienteforum.jsp">Fórum</a>
     <a href="pacienteperfil.jsp">Perfil</a>
@@ -63,7 +75,20 @@
 </div>
 
 <div class="main-content">
-    <h2>Mensagens Recebidas</h2>
+    <h2>Enviar Nova Mensagem</h2>
+
+    <div class="form-wrapper">
+        <% if (profissionalId != -1) { %>
+            <form method="post" action="<%= request.getContextPath() %>/EnviarMensagemServlet" class="center-form">
+                <input type="hidden" name="destinatarioId" value="<%= profissionalId %>">
+                <textarea name="mensagem" rows="4" cols="50" required></textarea><br>
+                <button class="button" type="submit">Enviar para <%= profissionalNome %></button>
+            </form>
+            
+        <% } else { %>
+            <p>Não tem ligação aceite com nenhum profissional ainda.</p>
+        <% } %>
+    </div>
 
     <%
         String msg = request.getParameter("msg");
@@ -74,6 +99,7 @@
         }
     %>
 
+    <h2>Mensagens Recebidas</h2>
     <%
         while (rs.next()) {
     %>
@@ -86,40 +112,13 @@
         }
         rs.close();
         ps.close();
-
-        // Verificar profissional associado
-        String sqlProf = "SELECT u.id, u.nome FROM Ligacoes l JOIN Utilizadores u ON l.id_profissional = u.id WHERE l.id_paciente = ? AND l.estado = 'Aceite' LIMIT 1";
-        ps = conn.prepareStatement(sqlProf);
-        ps.setInt(1, pacienteId);
-        rs = ps.executeQuery();
-        if (rs.next()) {
-            profissionalId = rs.getInt("id");
-            profissionalNome = rs.getString("nome");
-        }
-        rs.close();
-        ps.close();
     %>
-
-    <div class="form-wrapper">
-        <h3>Enviar Nova Mensagem</h3>
-
-        <% if (profissionalId != -1) { %>
-            <form method="post" action="<%= request.getContextPath() %>/EnviarMensagemServlet">
-                <input type="hidden" name="destinatarioId" value="<%= profissionalId %>">
-                <textarea name="mensagem" rows="4" cols="50" required></textarea><br>
-                <button class="button" type="submit">Enviar para <%= profissionalNome %></button>
-            </form>
-        <% } else { %>
-            <p>Não tem ligação aceite com nenhum profissional ainda.</p>
-        <% } %>
-    </div>
 
     <br>
     <button class="button" onclick="window.location.href='paginainicial.jsp'">Sair</button>
 </div>
 
 <script>
-    // Ocultar mensagem de sucesso após 4 segundos
     setTimeout(() => {
         const alert = document.querySelector('.alert.success');
         if (alert) alert.style.display = 'none';

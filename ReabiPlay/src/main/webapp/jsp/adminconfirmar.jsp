@@ -22,7 +22,7 @@
 
 <div class="main-content">
   <h2>Confirmar Profissionais de Saúde</h2>
-  <p><em>Abaixo encontra a lista de profissionais que aguardam confirmação.</em></p>
+  <p><em>Aqui encontra a lista de profissionais que aguardam confirmação.</em></p>
 
   <div class="confirmation-list">
 
@@ -41,7 +41,7 @@
           conn = DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
 
           // Buscar profissionais com tipo = 'Profissional'
-          String sql = "SELECT u.id, u.nome, u.email FROM Utilizadores u WHERE u.tipo = 'Profissional'";
+          String sql = "SELECT u.id, u.nome, u.email FROM Utilizadores u WHERE u.tipo = 'Profissional' AND u.ativo = 0";
           stmt = conn.prepareStatement(sql);
           rs = stmt.executeQuery();
 

@@ -60,11 +60,11 @@ public class EnviarMensagemServlet extends HttpServlet {
 
             // Redirecionar para a página correta consoante o user
             if ("Paciente".equals(userType)) {
-                response.sendRedirect(request.getContextPath() + "jsp/pacientemensagens.jsp?msg=sucesso");
+                response.sendRedirect(request.getContextPath() + "/jsp/pacientemensagens.jsp?msg=sucesso");
             } else if ("Profissional".equals(userType)) {
-                response.sendRedirect(request.getContextPath() + "jsp/profissionalmensagens.jsp?msg=sucesso");
+                response.sendRedirect(request.getContextPath() + "/jsp/profissionalmensagens.jsp?msg=sucesso");
             } else {
-                response.sendRedirect(request.getContextPath() + "jsp/paginainicial.jsp");
+                response.sendRedirect(request.getContextPath() + "/jsp/paginainicial.jsp");
             }
 
         } catch (ClassNotFoundException | SQLException e) {

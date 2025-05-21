@@ -16,7 +16,6 @@
 
     try {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        // Adicione os parâmetros para garantir UTF-8 na conexão
         Connection conn = DriverManager.getConnection(
             "jdbc:mysql://localhost:3306/ReabiPlay?useUnicode=true&characterEncoding=UTF-8", 
             "root", "Supermercado00");
@@ -64,7 +63,6 @@
     <a href="pacienteprincipal.jsp">Página Principal</a>
     <a href="pacienteplanoreabilitacao.jsp">Plano de Reabilitação</a>
     <a href="pacientejogos.jsp">Jogos</a>
-    <a href="pacienteestatisticas.jsp">Estatísticas</a>
     <a href="pacientemensagens.jsp">Mensagens</a>
     <a href="pacienteforum.jsp" class="active">Fórum</a>
     <a href="pacienteperfil.jsp">Perfil</a>
@@ -112,7 +110,7 @@
           <div class="forum-footer">
             <form action="pacienteforumrespostas.jsp" method="get">
               <input type="hidden" name="forumId" value="<%= post.get("id") %>" />
-              <button class="button" type="submit">Ver Postagens</button>
+              <button class="button" type="submit">Ver Respostas</button>
             </form>
           </div>
         </div>
