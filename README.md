@@ -44,6 +44,7 @@ Recompensas associadas ao desempenho.
 Mecanismos de incentivo à participação e continuidade dos exercícios.
 
 🧪 Testes e Validação
+
 A plataforma foi submetida a testes em ambientes controlados e em contextos reais, permitindo avaliar a sua funcionalidade, usabilidade e impacto no processo de reabilitação.
 Os resultados evidenciaram que a personalização das atividades e a utilização de mecanismos de feedback positivo contribuem para aumentar a motivação e a adesão dos pacientes, promovendo melhorias no desempenho físico e cognitivo.
 
