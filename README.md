@@ -8,6 +8,7 @@ Através da utilização de jogos sérios (Serious Games), os pacientes podem re
 O projeto pretende contribuir para uma reabilitação mais acessível, interativa e motivadora, promovendo a autonomia, o bem-estar e a qualidade de vida da população idosa.
 
 🎯 Objetivos
+
 Desenvolver uma plataforma digital de apoio à reabilitação física e cognitiva de idosos.
 Promover a colaboração entre pacientes, profissionais de saúde e familiares.
 Disponibilizar jogos sérios personalizados e adaptados às necessidades de cada paciente.
@@ -65,6 +66,7 @@ MySQL Workbench – Ferramenta de modelação e gestão da base de dados.
 Apache Tomcat – Servidor de aplicação para execução da aplicação Java/JSP.
 
 🚀 Instalação e Execução
+
 Para executar o projeto localmente, são necessários os seguintes componentes:
 Java JDK.
 Apache Tomcat.
@@ -72,12 +74,15 @@ MySQL Server.
 MySQL Workbench (opcional, para gestão da base de dados).
 
 🎓 Contexto Académico
+
 Este projeto foi desenvolvido no âmbito do Projeto Final de Curso, tendo como principal finalidade a conceção e implementação de uma solução tecnológica de apoio à reabilitação física e cognitiva da população idosa.
 O ReabiPlay representa uma abordagem à aplicação de tecnologias digitais e jogos sérios na área da saúde, procurando melhorar a experiência de reabilitação através da personalização, colaboração e motivação dos pacientes.
 
 👨‍💻 Autores
+
 Beatriz Fernandes
 
 📄 Licença
+
 Projeto desenvolvido para fins académicos.
 A utilização, distribuição ou modificação do código deverá respeitar as condições definidas pelos autores e pela instituição de ensino.
