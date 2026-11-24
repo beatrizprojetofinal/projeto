@@ -19,22 +19,26 @@ Facilitar a comunicação e a partilha de experiências entre os diferentes util
 ✨ Principais Funcionalidades
 
 🎮 Jogos Sérios e Exercícios de Reabilitação
+
 Jogos personalizados de acordo com as necessidades de cada paciente.
 Exercícios de estimulação cognitiva, nomeadamente atividades de memória.
 Diferentes níveis de dificuldade, adaptados às capacidades dos pacientes.
 
 📊 Monitorização do Progresso
+
 Acompanhamento do desempenho dos pacientes.
 Consulta de estatísticas e resultados das atividades realizadas.
 Monitorização da evolução ao longo do processo de reabilitação.
 Possibilidade de os profissionais de saúde ajustarem as atividades de acordo com o progresso observado.
 
 💬 Comunicação e Colaboração
+
 Sistema de mensagens entre pacientes e profissionais de saúde.
 Fóruns de discussão para partilha de experiências e apoio mútuo.
 Envolvimento dos familiares no processo de acompanhamento.
 
 🏆 Motivação e Recompensas
+
 Feedback visual durante a realização das atividades.
 Recompensas associadas ao desempenho.
 Mecanismos de incentivo à participação e continuidade dos exercícios.
