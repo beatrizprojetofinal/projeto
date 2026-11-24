@@ -1,4 +1,5 @@
 🎮 ReabiPlay – Plataforma Colaborativa de Jogos Sérios Aplicados à Reabilitação de Idosos
+
 📌 Sobre o Projeto
 
 O ReabiPlay é uma plataforma colaborativa desenvolvida no âmbito de um Projeto Final de Curso, com o objetivo de integrar ferramentas digitais no processo de reabilitação física e cognitiva de idosos.
@@ -49,11 +50,14 @@ Backend
 Java – Linguagem de programação utilizada na implementação da lógica de negócio.
 JSP (JavaServer Pages) – Utilizado para a criação de páginas web dinâmicas.
 JDBC (Java Database Connectivity) – Responsável pela comunicação entre a aplicação Java e a base de dados.
+
 Frontend
 HTML – Estruturação das páginas web.
 CSS – Estilização e apresentação da interface gráfica.
+
 Base de Dados
 MySQL – Sistema de gestão de base de dados relacional utilizado para armazenar e gerir os dados da plataforma.
+
 Ferramentas de Desenvolvimento
 Eclipse – Ambiente de desenvolvimento para Java.
 Visual Studio Code – Editor utilizado no desenvolvimento frontend.
