@@ -21,31 +21,41 @@ Facilitar a comunicação e a partilha de experiências entre os diferentes util
 🎮 Jogos Sérios e Exercícios de Reabilitação
 
 Jogos personalizados de acordo com as necessidades de cada paciente.
+
 Exercícios de estimulação cognitiva, nomeadamente atividades de memória.
+
 Diferentes níveis de dificuldade, adaptados às capacidades dos pacientes.
 
 📊 Monitorização do Progresso
 
 Acompanhamento do desempenho dos pacientes.
+
 Consulta de estatísticas e resultados das atividades realizadas.
+
 Monitorização da evolução ao longo do processo de reabilitação.
+
 Possibilidade de os profissionais de saúde ajustarem as atividades de acordo com o progresso observado.
 
 💬 Comunicação e Colaboração
 
 Sistema de mensagens entre pacientes e profissionais de saúde.
+
 Fóruns de discussão para partilha de experiências e apoio mútuo.
+
 Envolvimento dos familiares no processo de acompanhamento.
 
 🏆 Motivação e Recompensas
 
 Feedback visual durante a realização das atividades.
+
 Recompensas associadas ao desempenho.
+
 Mecanismos de incentivo à participação e continuidade dos exercícios.
 
 🧪 Testes e Validação
 
 A plataforma foi submetida a testes em ambientes controlados e em contextos reais, permitindo avaliar a sua funcionalidade, usabilidade e impacto no processo de reabilitação.
+
 Os resultados evidenciaram que a personalização das atividades e a utilização de mecanismos de feedback positivo contribuem para aumentar a motivação e a adesão dos pacientes, promovendo melhorias no desempenho físico e cognitivo.
 
 🛠️ Tecnologias e Ferramentas Utilizadas
@@ -73,14 +83,19 @@ Apache Tomcat – Servidor de aplicação para execução da aplicação Java/JS
 🚀 Instalação e Execução
 
 Para executar o projeto localmente, são necessários os seguintes componentes:
+
 Java JDK.
+
 Apache Tomcat.
+
 MySQL Server.
+
 MySQL Workbench (opcional, para gestão da base de dados).
 
 🎓 Contexto Académico
 
 Este projeto foi desenvolvido no âmbito do Projeto Final de Curso, tendo como principal finalidade a conceção e implementação de uma solução tecnológica de apoio à reabilitação física e cognitiva da população idosa.
+
 O ReabiPlay representa uma abordagem à aplicação de tecnologias digitais e jogos sérios na área da saúde, procurando melhorar a experiência de reabilitação através da personalização, colaboração e motivação dos pacientes.
 
 👨‍💻 Autores
